@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Deep Creek Plumbing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white: #FAF9F6; --card: #FFFFFF; --charcoal: #262420; --charcoal-soft: #6E6B65;
+    --grey: #F0EEE9; --blue: #2C5C86; --blue-deep: #1F4363; --red: #C0392B; --line: #E7E3DA;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Manrope', sans-serif; color:var(--charcoal); background:var(--white); line-height:1.6;}
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 24px;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--blue); outline-offset:2px;}
+  h1,h2,h3{font-weight:800; letter-spacing:-0.02em; color:var(--charcoal);}
+  .eyebrow{font-size:12.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue);}
+
+  header.site{background:var(--white); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:50;}
+  header.site .wrap{display:flex; align-items:center; justify-content:space-between; padding:20px 24px;}
+  .logo{display:flex; align-items:center; gap:9px; font-weight:800; font-size:18px;}
+  .btn{display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:14.5px; padding:13px 24px; border-radius:10px; border:1.5px solid transparent; cursor:pointer;}
+  .btn-primary{background:var(--blue); color:#fff;}
+  .btn-primary:hover{background:var(--blue-deep);}
+  .btn-outline{background:transparent; border-color:var(--charcoal); color:var(--charcoal);}
+  .btn-outline:hover{background:var(--charcoal); color:#fff;}
+
+  .page-hero{padding:64px 0 56px; text-align:center; background:var(--grey); border-bottom:1px solid var(--line);}
+  .page-hero .eyebrow{display:block; margin-bottom:16px;}
+  .page-hero h1{font-size:clamp(30px,4.4vw,46px); margin-bottom:16px;}
+  .page-hero p{color:var(--charcoal-soft); font-size:16px; max-width:52ch; margin:0 auto;}
+
+  .services-section{padding:80px 0;}
+  .cat-block{margin-bottom:56px;}
+  .cat-block:last-child{margin-bottom:0;}
+  .cat-head{display:flex; align-items:center; gap:14px; margin-bottom:22px;}
+  .cat-num{
+    width:38px; height:38px; border-radius:10px; background:var(--grey);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:14px; color:var(--blue); flex:none;
+  }
+  .cat-head h2{font-size:20px;}
+  .service-list{
+    list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:0 32px;
+    border-top:1px solid var(--line); margin-left:52px;
+  }
+  .service-list li{
+    padding:14px 0; border-bottom:1px solid var(--line);
+    font-size:15px; color:var(--charcoal); display:flex; align-items:flex-start; gap:10px;
+  }
+  .service-list li svg{width:15px; height:15px; color:var(--blue); flex:none; margin-top:3px;}
+
+  .cta-strip{background:var(--blue); color:#fff; padding:64px 0; text-align:center;}
+  .cta-strip h2{color:#fff; font-size:clamp(22px,2.8vw,30px); margin-bottom:22px;}
+  .cta-strip .btn-outline{border-color:rgba(255,255,255,0.5); color:#fff;}
+  .cta-strip .btn-outline:hover{background:#fff; color:var(--blue);}
+  .cta-strip .btn-white{background:#fff; color:var(--blue);}
+
+  footer.site{background:var(--charcoal); color:rgba(250,249,246,0.6); text-align:center; padding:32px 24px; font-size:12.5px;}
+  footer.site a{color:rgba(250,249,246,0.85);}
+
+  @media (max-width:700px){
+    .service-list{grid-template-columns:1fr; margin-left:0;}
+    .cat-head{align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="logo">Deep Creek Plumbing</div>
+    <div style="display:flex; gap:12px;">
+      <a href="tel:0432863654" class="btn btn-outline">Call Now</a>
+      <a href="/get-a-quote.html" class="btn btn-primary">Request a Quote</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Services</span>
+    <h1>Everything we cover</h1>
+    <p>Family-owned, 15+ years across residential and commercial plumbing. If it's not listed here, give us a call anyway — chances are we can still help.</p>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="wrap">
+
+    <div class="cat-block">
+      <div class="cat-head"><div class="cat-num">01</div><h2>Emergency &amp; Urgent</h2></div>
+      <ul class="service-list">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Emergency plumbing</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Burst pipe repairs</li>
+      </ul>
+      <a href="emergency-plumbing.html" style="display:inline-block; margin-top:14px; font-size:13.5px; font-weight:700; color:var(--blue);">Learn more about emergency plumbing →</a>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-head"><div class="cat-num">02</div><h2>Drains &amp; Sewer</h2></div>
+      <ul class="service-list">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Blocked drains and drain cleaning</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sewer repairs and replacements</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>CCTV drain inspections</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>High-pressure water jet drain cleaning</li>
+      </ul>
+      <a href="blocked-drains.html" style="display:inline-block; margin-top:14px; font-size:13.5px; font-weight:700; color:var(--blue);">Learn more about blocked drains →</a>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-head"><div class="cat-num">03</div><h2>Hot Water &amp; Gas</h2></div>
+      <ul class="service-list">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Hot water system repairs, servicing &amp; replacements</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Gas fitting and gas appliance installations</li>
+      </ul>
+      <a href="hot-water-systems.html" style="display:inline-block; margin-top:14px; font-size:13.5px; font-weight:700; color:var(--blue);">Learn more about hot water systems →</a>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-head"><div class="cat-num">04</div><h2>General Repairs &amp; Maintenance</h2></div>
+      <ul class="service-list">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Leak detection and repairs</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Toilet repairs and installations</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Tap, sink, and shower repairs</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>General plumbing maintenance</li>
+      </ul>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-head"><div class="cat-num">05</div><h2>Renovations &amp; New Builds</h2></div>
+      <ul class="service-list">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Bathroom, kitchen &amp; laundry renovations</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>New home plumbing and fit-outs</li>
+      </ul>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-head"><div class="cat-num">06</div><h2>Outdoor &amp; Water Systems</h2></div>
+      <ul class="service-list">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Gutter, downpipe &amp; stormwater repairs</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Water filter installations</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Rainwater tank connections and pumps</li>
+      </ul>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-head"><div class="cat-num">07</div><h2>Commercial &amp; Compliance</h2></div>
+      <ul class="service-list">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Commercial plumbing and maintenance</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Residential plumbing services</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Plumbing inspections and compliance certificates</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Not sure which service you need?</h2>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="tel:0432863654" class="btn btn-white">Call 0432 863 654</a>
+      <a href="/get-a-quote.html" class="btn btn-outline">Request a Quote</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  © 2026 Deep Creek Plumbing. All rights reserved. — <a href="index.html">Back to home</a>
+</footer>
+
+</body>
+</html>
