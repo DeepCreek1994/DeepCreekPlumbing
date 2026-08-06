@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Creek Plumbing — Coming Soon</title>
+<meta name="description" content="Deep Creek Plumbing's new website is on its way. Call 0432 863 654 for plumbing services across the Mid North Coast NSW.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white: #FAF9F6; --charcoal: #262420; --charcoal-soft: #6E6B65;
+    --blue: #2C5C86; --blue-deep: #1F4363; --line: #E7E3DA;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Manrope', sans-serif; color:var(--charcoal); background:var(--white);
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:32px; line-height:1.6;
+  }
+  a{color:inherit;}
+
+  .mark{width:64px; height:64px; margin-bottom:28px; opacity:0.9;}
+
+  .loading-dots{display:flex; gap:8px; justify-content:center; margin-bottom:32px;}
+  .loading-dots span{
+    width:8px; height:8px; border-radius:50%; background:var(--blue);
+    animation:pulse 1.4s ease-in-out infinite;
+  }
+  .loading-dots span:nth-child(2){animation-delay:0.2s;}
+  .loading-dots span:nth-child(3){animation-delay:0.4s;}
+  @keyframes pulse{
+    0%, 80%, 100%{opacity:0.25; transform:scale(0.8);}
+    40%{opacity:1; transform:scale(1);}
+  }
+
+  .eyebrow{font-size:12.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); margin-bottom:18px;}
+  h1{font-size:clamp(28px,5vw,42px); font-weight:800; letter-spacing:-0.02em; margin-bottom:18px; max-width:16ch;}
+  p.sub{color:var(--charcoal-soft); font-size:16px; max-width:44ch; margin-bottom:36px;}
+
+  .call-card{
+    background:#fff; border:1.5px solid var(--line); border-radius:16px;
+    padding:24px 32px; margin-bottom:48px;
+    box-shadow:0 1px 2px rgba(38,36,32,0.03), 0 14px 34px -20px rgba(38,36,32,0.18);
+  }
+  .call-card p{font-size:13px; color:var(--charcoal-soft); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.06em; font-weight:700;}
+  .call-card a.phone{font-size:24px; font-weight:800; color:var(--charcoal); display:block; margin-bottom:4px;}
+  .call-card a.phone:hover{color:var(--blue);}
+  .call-card .area{font-size:14px; color:var(--charcoal-soft);}
+
+  .sub a.sneaky{color:var(--charcoal); text-decoration:underline; text-decoration-color:var(--line); text-underline-offset:3px; transition:color .18s ease, text-decoration-color .18s ease;}
+  .sub a.sneaky:hover{color:var(--blue); text-decoration-color:var(--blue);}
+
+  .credit{font-size:12.5px; color:var(--charcoal-soft);}
+  .credit a{color:var(--blue); font-weight:600;}
+  .credit a:hover{color:var(--blue-deep);}
+
+  @media (max-width:480px){
+    .call-card{padding:20px 24px; width:100%; max-width:340px;}
+  }
+</style>
+</head>
+<body>
+
+  <svg class="mark" viewBox="0 0 24 24" fill="none">
+    <path d="M12 3s6 6.5 6 11a6 6 0 1 1-12 0c0-4.5 6-11 6-11z" stroke="#2C5C86" stroke-width="1.4"/>
+    <path d="M4 6h16M6 6v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6" stroke="#C0392B" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+  </svg>
+
+  <span class="eyebrow">Deep Creek Plumbing</span>
+  <h1>Something great is on its way.</h1>
+  <p class="sub">Our new <a href="https://deepcreekplumbing.pages.dev/" class="sneaky">website</a> is being built. In the meantime, we're still very much open for business — give us a call.</p>
+
+  <div class="loading-dots"><span></span><span></span><span></span></div>
+
+  <div class="call-card">
+    <p>Call us anytime</p>
+    <a href="tel:0432863654" class="phone">0432 863 654</a>
+    <div class="area">Mid North Coast, NSW</div>
+  </div>
+
+  <div class="credit">
+    Website by <a href="https://buildingbrain.com.au" target="_blank" rel="noopener">Building Brain Digital</a>
+  </div>
+
+</body>
+</html>
