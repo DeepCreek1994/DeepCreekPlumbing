@@ -1,0 +1,3 @@
+name = "deepcreek-enquiry-worker"
+main = "deepcreek-enquiry-worker.js"
+compatibility_date = "2026-08-01"

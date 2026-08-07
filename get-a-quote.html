@@ -325,11 +325,48 @@
   var form = document.getElementById('quoteForm');
   var card = document.getElementById('formCard');
   var success = document.getElementById('successState');
+  var submitBtn = form.querySelector('button[type="submit"]');
+
+  // IMPORTANT: replace this with your deployed Worker URL once you have it
+  // e.g. "https://deepcreek-enquiry-worker.YOUR-SUBDOMAIN.workers.dev"
+  var ENQUIRY_ENDPOINT = "https://deepcreek-enquiry-worker.holly-turner1994.workers.dev";
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    card.classList.add('submitted');
-    success.classList.add('show');
-    success.scrollIntoView({behavior:'smooth', block:'center'});
+
+    var activeJob = jobGrid.querySelector('.job-tile.active');
+    var activeUrgency = urgencyRow.querySelector('.urgency-btn.active');
+
+    var payload = {
+      name: document.getElementById('name').value,
+      phone: document.getElementById('phone').value,
+      suburb: document.getElementById('suburb').value,
+      message: document.getElementById('message').value,
+      job: activeJob ? activeJob.getAttribute('data-job') : '',
+      urgency: activeUrgency ? activeUrgency.getAttribute('data-urgency') : ''
+    };
+
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+
+    fetch(ENQUIRY_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function(res){ return res.json(); })
+      .then(function(data){
+        if (data && data.success) {
+          card.classList.add('submitted');
+          success.classList.add('show');
+          success.scrollIntoView({behavior:'smooth', block:'center'});
+        } else {
+          throw new Error('Send failed');
+        }
+      })
+      .catch(function(){
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send to Holly'; }
+        alert("Something went wrong sending your enquiry. Please call us directly instead.");
+      });
   });
 })();
 </script>
