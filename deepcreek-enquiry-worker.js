@@ -9,12 +9,12 @@
  *   RESEND_API_KEY
  *
  * Update the constants below before deploying:
- *   - TO_EMAIL: where enquiries should land (Holly's general inbox)
+ *   - TO_EMAIL: where enquiries should land (Holly's inbox + Jay's for monitoring)
  *   - FROM_EMAIL: must be on a domain verified in Resend
  *   - ALLOWED_ORIGIN: your live site's origin, for CORS
  */
 
-const TO_EMAIL = "info@deepcreekplumbing.com.au";
+const TO_EMAIL = ["info@deepcreekplumbing.com.au", "jwa7990@gmail.com"];
 const FROM_EMAIL = "Deep Creek Plumbing <enquiries@deepcreekplumbing.com.au>";
 const ALLOWED_ORIGIN = "https://deepcreekplumbing.com.au";
 
@@ -101,8 +101,7 @@ export default {
         },
         body: JSON.stringify({
           from: FROM_EMAIL,
-          to: [TO_EMAIL],
-          reply_to: phone, // not a real email, but harmless; consider removing if Resend rejects non-email reply_to
+          to: TO_EMAIL,
           subject: subject,
           html: html,
         }),

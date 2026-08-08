@@ -477,41 +477,8 @@
     </div>
     <div class="family-copy">
       <span class="eyebrow">About Deep Creek Plumbing</span>
-      <h2 class="stat-heading">15+ Years Experience</h2>
-      <div class="why-slider" id="whySlider">
-        <div class="why-track" id="whyTrack">
-          <div class="why-slide">
-            <h3>Turn up on time</h3>
-            <p>We book in two-hour windows instead of making you wait all day.</p>
-          </div>
-          <div class="why-slide">
-            <h3>Upfront pricing</h3>
-            <p>No hidden surprises, no unexpected invoices.</p>
-          </div>
-          <div class="why-slide">
-            <h3>Respect your home</h3>
-            <p>We wear boot covers and clean up after every job.</p>
-          </div>
-          <div class="why-slide">
-            <h3>Licensed &amp; insured</h3>
-            <p>You're protected from start to finish.</p>
-          </div>
-          <div class="why-slide">
-            <h3>15+ years experience</h3>
-            <p>Two decades of straightforward work across the Coast.</p>
-          </div>
-          <div class="why-slide">
-            <h3>Hundreds of local jobs</h3>
-            <p>Real jobs, real neighbours, real results.</p>
-          </div>
-        </div>
-        <div class="why-controls">
-          <button class="why-arrow" id="whyPrev" aria-label="Previous reason">←</button>
-          <span class="why-counter" id="whyCounter">1 / 6</span>
-          <button class="why-arrow" id="whyNext" aria-label="Next reason">→</button>
-        </div>
-      </div>
-      <p>Deep Creek Plumbing services the Mid North Coast with straightforward work — turning up on time, communicating clearly, and leaving every home better than we found it.</p>
+      <h2 class="stat-heading">Fifteen Years, Still Local, Still Family.</h2>
+      <p>Bryce started his apprenticeship over fifteen years ago, and Deep Creek Plumbing has grown out of doing that work properly ever since — turning up when we say we will, being upfront and honest with customers, and treating every home the way we treat our own. We're local to the Mid North Coast, we're raising our family here, and most of our work still comes from word-of-mouth — people happy with the job we've done, telling others. Doing a good job every time is the most important thing for us.</p>
       <div class="family-sign">— <strong>Bryce &amp; Holly</strong>, Deep Creek Plumbing</div>
     </div>
   </div>
@@ -583,6 +550,36 @@
   </div>
 </section>
 
+<section class="section" id="faq">
+  <div class="wrap">
+    <span class="eyebrow">Common Questions</span>
+    <h2>A Few Things Worth Knowing</h2>
+    <div class="faq-list" style="max-width:760px; margin:32px auto 0; border-top:1px solid var(--line);">
+
+      <div class="faq-item" style="padding:22px 0; border-bottom:1px solid var(--line);">
+        <h3 style="font-size:17px; margin-bottom:8px;">Why does the price vary from job to job?</h3>
+        <p style="color:var(--charcoal-soft); font-size:15px;">Every job's different — the parts, fittings and hot water units we use vary in cost, and those material prices genuinely move with the market. We're not padding the number; that's the real cost of what's going into your home. We'll always walk you through the quote before we start, so nothing shows up as a surprise on the invoice.</p>
+      </div>
+
+      <div class="faq-item" style="padding:22px 0; border-bottom:1px solid var(--line);">
+        <h3 style="font-size:17px; margin-bottom:8px;">Do you charge a call-out fee?</h3>
+        <p style="color:var(--charcoal-soft); font-size:15px;">For quotes, no — that's free and no-obligation. For emergency call-outs, ask when you call and we'll tell you straight up before anyone heads out.</p>
+      </div>
+
+      <div class="faq-item" style="padding:22px 0; border-bottom:1px solid var(--line);">
+        <h3 style="font-size:17px; margin-bottom:8px;">Are you licensed and insured?</h3>
+        <p style="color:var(--charcoal-soft); font-size:15px;">Yes, fully licensed and insured for both residential and commercial plumbing work across NSW.</p>
+      </div>
+
+      <div class="faq-item" style="padding:22px 0; border-bottom:1px solid var(--line);">
+        <h3 style="font-size:17px; margin-bottom:8px;">How quickly can you get to me?</h3>
+        <p style="color:var(--charcoal-soft); font-size:15px;">For emergencies, as fast as we can — usually the same day. For everything else, we'll give you a real timeframe when you call rather than a vague "sometime this week."</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section class="cta-banner">
   <div class="wrap">
     <h2>Ready to get it sorted?</h2>
@@ -640,39 +637,6 @@
   menu.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){ menu.classList.remove('open'); });
   });
-})();
-
-// Why Choose Deep Creek — swipeable trust cards
-(function(){
-  var track = document.getElementById('whyTrack');
-  var counter = document.getElementById('whyCounter');
-  var prev = document.getElementById('whyPrev');
-  var next = document.getElementById('whyNext');
-  if(!track) return;
-  var total = track.querySelectorAll('.why-slide').length;
-  var index = 0;
-
-  function update(){
-    track.style.transform = 'translateX(-' + (index * 100) + '%)';
-    counter.textContent = (index + 1) + ' / ' + total;
-  }
-  function go(delta){
-    index = (index + delta + total) % total;
-    update();
-  }
-  if(prev) prev.addEventListener('click', function(){ go(-1); });
-  if(next) next.addEventListener('click', function(){ go(1); });
-
-  var startX = null;
-  track.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
-  track.addEventListener('touchend', function(e){
-    if(startX === null) return;
-    var deltaX = e.changedTouches[0].clientX - startX;
-    if(Math.abs(deltaX) > 40){ go(deltaX < 0 ? 1 : -1); }
-    startX = null;
-  }, {passive:true});
-
-  update();
 })();
 
 // Recent Work — before/after slider on the large tile
