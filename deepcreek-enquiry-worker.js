@@ -4,25 +4,25 @@
  * Receives the "Get a Quote" form POST from the website and sends
  * an email via Resend to the client's inbox.
  *
- * Required secret (set via `wrangler secret put RESEND_API_KEY`
- * or the Cloudflare dashboard → this Worker → Settings → Variables & Secrets):
+ * Required secrets (set via `wrangler secret put`):
  *   RESEND_API_KEY
- *
- * Update the constants below before deploying:
- *   - TO_EMAIL: where enquiries should land (Holly's inbox + Jay's for monitoring)
- *   - FROM_EMAIL: must be on a domain verified in Resend
- *   - ALLOWED_ORIGIN: your live site's origin, for CORS
+ *   SUPABASE_SERVICE_KEY  — new, needed for enquiry logging + monitor checks
  */
 
 const TO_EMAIL = ["info@deepcreekplumbing.com.au", "jwa7990@gmail.com"];
 const FROM_EMAIL = "Deep Creek Plumbing <enquiries@deepcreekplumbing.com.au>";
 const ALLOWED_ORIGIN = "https://deepcreekplumbing.com.au";
 
+// Building Brain's Supabase project — same one Workshop itself uses.
+const SUPABASE_URL = "https://qwlkpfrpzpswvedtcclj.supabase.co";
+// Deep Creek Plumbing's row id in bb_clients — fixed per-worker constant.
+const CLIENT_ID = "e8576821-e0d7-468c-9c18-9301cc1e8d82";
+
 function corsHeaders(origin) {
   return {
     "Access-Control-Allow-Origin": origin,
     "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Headers": "Content-Type, X-BB-Monitor-Test",
   };
 }
 
@@ -32,6 +32,32 @@ function escapeHtml(str) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+// Logs one row per real submission — makes real enquiry counts possible in
+// Building Brain's monthly reports (see countEnquiries in
+// building-brain-worker.js). source='monitor_test' rows are excluded from
+// those counts. Errors are logged (visible via wrangler tail) but never
+// block the real email send — that's still the actual job of this worker.
+async function logEnquiry(source, env) {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/bb_enquiries`, {
+      method: "POST",
+      headers: {
+        apikey: env.SUPABASE_SERVICE_KEY,
+        Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+        "Content-Type": "application/json",
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify([{ client_id: CLIENT_ID, source }]),
+    });
+    if (!res.ok) {
+      const errText = await res.text();
+      console.error("logEnquiry failed:", res.status, errText);
+    }
+  } catch (e) {
+    console.error("logEnquiry threw:", e.message);
+  }
 }
 
 export default {
@@ -66,6 +92,20 @@ export default {
     if (!name || !phone) {
       return new Response(JSON.stringify({ success: false, error: "Missing required fields" }), {
         status: 400,
+        headers: { "Content-Type": "application/json", ...corsHeaders(origin) },
+      });
+    }
+
+    // Building Brain's weekly proof-of-life check (see check_monitors mode
+    // in building-brain-worker.js). Real name/phone validation above still
+    // runs — that's genuinely part of what's being tested — but nothing
+    // past this point ever emails Deep Creek or Jay. Logged as monitor_test
+    // so it's excluded from real enquiry counts.
+    const isMonitorTest = request.headers.get("X-BB-Monitor-Test") === "true";
+    if (isMonitorTest) {
+      await logEnquiry("monitor_test", env);
+      return new Response(JSON.stringify({ success: true, test: true }), {
+        status: 200,
         headers: { "Content-Type": "application/json", ...corsHeaders(origin) },
       });
     }
@@ -115,6 +155,10 @@ export default {
           headers: { "Content-Type": "application/json", ...corsHeaders(origin) },
         });
       }
+
+      // Real enquiry — log it, but never let a logging hiccup block the
+      // response the client's form is waiting on.
+      await logEnquiry("contact_form", env);
 
       return new Response(JSON.stringify({ success: true }), {
         status: 200,
