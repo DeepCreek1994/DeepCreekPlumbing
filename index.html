@@ -371,7 +371,7 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="header-actions">
-      <a href="tel:0427708434" class="btn btn-outline call-btn">Call Now</a>
+      <a href="tel:0427708434" data-bb-click="call" class="btn btn-outline call-btn">Call Now</a>
       <a href="get-a-quote.html" class="btn btn-primary">Request a Quote</a>
       <button class="mobile-toggle" id="menuOpen" aria-label="Open menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#262420" stroke-width="2" stroke-linecap="round"/></svg>
@@ -391,7 +391,7 @@
   <a href="#work">Recent Work</a>
   <a href="#family">About</a>
   <a href="#contact">Contact</a>
-  <a href="tel:0427708434" class="btn btn-primary m-call">Call Now</a>
+  <a href="tel:0427708434" data-bb-click="call" class="btn btn-primary m-call">Call Now</a>
 </div>
 
 <section class="hero">
@@ -407,7 +407,7 @@
       </div>
       <p class="hero-sub">The plumber your neighbours already use — turning up when we say we will, telling you the real price before we start, and treating your place like it's ours.</p>
       <div class="cta-row">
-        <a href="tel:0427708434" class="btn btn-primary">Call Now</a>
+        <a href="tel:0427708434" data-bb-click="call" class="btn btn-primary">Call Now</a>
         <a href="get-a-quote.html" class="btn btn-outline">Request a Quote</a>
       </div>
       <div class="rating-inline">
@@ -584,7 +584,7 @@
   <div class="wrap">
     <h2>Ready to get it sorted?</h2>
     <div class="cta-row" style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-      <a href="tel:0427708434" class="btn btn-white">Call Now</a>
+      <a href="tel:0427708434" data-bb-click="call" class="btn btn-white">Call Now</a>
       <a href="get-a-quote.html" class="btn btn-outline">Request a Quote</a>
     </div>
   </div>
@@ -598,8 +598,8 @@
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
-      <a href="tel:0427708434">0427 708 434</a>
-      <a href="mailto:info@deepcreekplumbing.com.au">info@deepcreekplumbing.com.au</a>
+      <a href="tel:0427708434" data-bb-click="call">0427 708 434</a>
+      <a href="mailto:info@deepcreekplumbing.com.au" data-bb-click="email">info@deepcreekplumbing.com.au</a>
       <p>Taree, NSW 2430</p>
     </div>
     <div class="footer-col">
@@ -624,7 +624,7 @@
 </footer>
 
 <div class="sticky-call">
-  <a href="tel:0427708434">📞 Call Deep Creek Plumbing Now</a>
+  <a href="tel:0427708434" data-bb-click="call">📞 Call Deep Creek Plumbing Now</a>
 </div>
 
 <script>
@@ -653,6 +653,25 @@
     }
     range.addEventListener('input', function(){ update(range.value); });
     update(range.value);
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var BB_CLIENT_ID = 'e8576821-e0d7-468c-9c18-9301cc1e8d82';
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('[data-bb-click]');
+    if (!el) return;
+    fetch('https://building-brain.jwa7990.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        mode: 'track_click',
+        client_id: BB_CLIENT_ID,
+        click_type: el.getAttribute('data-bb-click'),
+      }),
+    }).catch(function(){});
   });
 })();
 </script>
