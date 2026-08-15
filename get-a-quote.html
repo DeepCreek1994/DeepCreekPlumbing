@@ -202,7 +202,7 @@
       Deep Creek Plumbing
     </div>
     <div class="header-actions">
-      <a href="tel:0427708434" class="btn btn-outline">📞 Call Now</a>
+      <a href="tel:0427708434" class="btn btn-outline" data-bb-click="call">📞 Call Now</a>
     </div>
   </div>
 </header>
@@ -304,6 +304,25 @@
   © 2026 Deep Creek Plumbing. All rights reserved.
 </footer>
 
+<!-- Building Brain — click tracking for tel:/mailto: links anywhere on
+     this page (currently just the header "Call Now" link). One
+     delegated listener, so it also covers any future link marked
+     data-bb-click without needing more script added. -->
+<script>
+(function(){
+  var BB_CLIENT_ID = 'e8576821-e0d7-468c-9c18-9301cc1e8d82';
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('[data-bb-click]');
+    if (!el) return;
+    fetch('https://building-brain.jwa7990.workers.dev', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ mode: 'track_click', client_id: BB_CLIENT_ID, click_type: el.getAttribute('data-bb-click') }),
+    }).catch(function(){});
+  });
+})();
+</script>
+
 <script>
 (function(){
   var jobGrid = document.getElementById('jobGrid');
@@ -331,6 +350,11 @@
   // e.g. "https://deepcreek-enquiry-worker.YOUR-SUBDOMAIN.workers.dev"
   var ENQUIRY_ENDPOINT = "https://deepcreek-enquiry-worker.holly-turner1994.workers.dev";
 
+  // Building Brain's own client id for this business — separate from
+  // ENQUIRY_ENDPOINT above, which is Holly's existing quote-notification
+  // worker and is untouched by any of this.
+  var BB_CLIENT_ID = 'e8576821-e0d7-468c-9c18-9301cc1e8d82';
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
 
@@ -345,6 +369,30 @@
       job: activeJob ? activeJob.getAttribute('data-job') : '',
       urgency: activeUrgency ? activeUrgency.getAttribute('data-urgency') : ''
     };
+
+    // Building Brain lead capture — fires independently of the send to
+    // Holly below. Never blocks it, never affects its success/failure
+    // handling either way; if this fails, Holly still gets her quote
+    // request exactly as she always has. Job type and urgency don't have
+    // their own columns in bb_leads yet, so they're folded into the
+    // message text instead of dropped.
+    fetch('https://building-brain.jwa7990.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        mode: 'submit_lead',
+        client_id: BB_CLIENT_ID,
+        name: payload.name,
+        phone: payload.phone,
+        message: [
+          payload.job ? 'Job: ' + payload.job : '',
+          payload.urgency ? 'Urgency: ' + payload.urgency : '',
+          payload.suburb ? 'Suburb: ' + payload.suburb : '',
+          payload.message ? 'Notes: ' + payload.message : ''
+        ].filter(Boolean).join(' · '),
+        source: 'website_form',
+      })
+    }).catch(function(){});
 
     if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
 
