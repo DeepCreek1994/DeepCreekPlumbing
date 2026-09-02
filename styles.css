@@ -566,6 +566,12 @@ a{ color: inherit; text-decoration: none; }
 
 .info-hero-media{ position: relative; aspect-ratio: 3 / 4; background: inherit; overflow: hidden; }
 .info-hero-card--navy .info-hero-media{ aspect-ratio: 4 / 3; }
+
+/* hero photos/icons add too much scroll on mobile — hide them below
+   900px and show text-only heroes instead. The quote-card media on
+   location pages (.location-motif) is content, not decoration, so
+   it stays visible at every width. */
+.info-hero-media:not(.location-motif){ display: none; }
 .info-hero-media.info-hero-media--landscape{ aspect-ratio: 4 / 3; }
 .info-hero-media img{
   position: absolute;
@@ -1339,6 +1345,7 @@ a.area-chip:hover{ transform: translateY(-3px); box-shadow: 0 16px 30px -18px rg
   .info-hero-content h1{ font-size: clamp(38px, 4.4vw, 52px); }
   .info-hero-media,
   .info-hero-card--cream .info-hero-media{ aspect-ratio: auto; height: 100%; }
+  .info-hero-media:not(.location-motif){ display: block; }
 
   .featured-grid{ grid-template-columns: repeat(3, 1fr); }
   .more-grid{ grid-template-columns: repeat(4, 1fr); }
