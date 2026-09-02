@@ -1,20 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B3B1F17HVP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-B3B1F17HVP');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Request a Quote — Deep Creek Plumbing</title>
 <meta name="description" content="Get a free, no-obligation quote from Deep Creek Plumbing. Fast response, honest pricing, Mid North Coast NSW. Call 0427 708 434 or request online.">
 <link rel="canonical" href="https://deepcreekplumbing.com.au/get-a-quote.html">
-<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" href="favicon.png" type="image/png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Request a Quote — Deep Creek Plumbing">
 <meta property="og:description" content="Get a free, no-obligation quote from Deep Creek Plumbing. Fast response, honest pricing, Mid North Coast NSW. Call 0427 708 434 or request online.">
@@ -23,131 +15,17 @@
 <meta property="og:locale" content="en_AU">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --white: #FAF9F6;
-    --card: #FFFFFF;
-    --charcoal: #262420;
-    --charcoal-soft: #6E6B65;
-    --grey: #F0EEE9;
-    --blue: #2C5C86;
-    --blue-deep: #1F4363;
-    --red: #C0392B;
-    --line: #E7E3DA;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:'Manrope', sans-serif;
-    color:var(--charcoal);
-    background:var(--white);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  img,svg{display:block; max-width:100%;}
-  a{color:inherit; text-decoration:none;}
-  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
-  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{outline:2px solid var(--blue); outline-offset:2px;}
-  h1,h2{font-weight:800; letter-spacing:-0.02em; color:var(--charcoal);}
-  .eyebrow{font-size:12.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue);}
-
-  /* ============ HEADER ============ */
-  header.site{background:var(--white); border-bottom:1px solid var(--line);}
-  header.site .wrap{max-width:1160px; display:flex; align-items:center; justify-content:space-between; padding:20px 24px;}
-  .logo{display:flex; align-items:center; gap:9px; font-weight:800; font-size:18px;}
-  .logo .mark{width:26px; height:26px; flex:none;}
-  .header-actions .btn{padding:12px 22px;}
-  .btn{display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:14.5px; padding:13px 24px; border-radius:10px; border:1.5px solid transparent; cursor:pointer; transition:background .18s ease, border-color .18s ease, color .18s ease;}
-  .btn-outline{background:transparent; border-color:var(--charcoal); color:var(--charcoal);}
-  .btn-outline:hover{background:var(--charcoal); color:#fff;}
-
-  /* ============ PAGE HERO ============ */
-  .page-hero{padding:72px 0 8px; text-align:center;}
-  .page-hero .eyebrow{display:block; margin-bottom:16px;}
-  .page-hero h1{font-size:clamp(30px,4vw,44px); line-height:1.1; margin-bottom:16px;}
-  .page-hero p{color:var(--charcoal-soft); font-size:16px; max-width:46ch; margin:0 auto;}
-
-  /* ============ FORM CARD ============ */
-  .form-section{padding:56px 0 120px;}
-  .form-card{background:var(--card); border-radius:24px; padding:44px; box-shadow:0 1px 2px rgba(38,36,32,0.03), 0 20px 50px -24px rgba(38,36,32,0.2);}
-  .field-group{margin-bottom:36px;}
-  .field-label{display:block; font-size:15px; font-weight:700; margin-bottom:14px;}
-  .field-label small{display:block; font-weight:500; font-size:13px; color:var(--charcoal-soft); margin-top:2px;}
-
-  /* job type tiles */
-  .job-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
-  .job-tile{
-    display:flex; flex-direction:column; align-items:center; gap:8px;
-    padding:18px 10px; border-radius:14px; border:1.5px solid var(--line);
-    background:var(--white); cursor:pointer; text-align:center;
-    transition:border-color .18s ease, background .18s ease, transform .12s ease;
-  }
-  .job-tile svg{width:22px; height:22px; color:var(--charcoal-soft); transition:color .18s ease;}
-  .job-tile span{font-size:13px; font-weight:700;}
-  .job-tile:hover{transform:translateY(-2px);}
-  .job-tile.active{border-color:var(--blue); background:rgba(44,92,134,0.06);}
-  .job-tile.active svg{color:var(--blue);}
-  .job-tile.active span{color:var(--blue);}
-
-  /* urgency segmented control */
-  .urgency-row{display:flex; gap:10px; flex-wrap:wrap;}
-  .urgency-btn{
-    flex:1; min-width:120px; padding:14px 12px; border-radius:12px;
-    border:1.5px solid var(--line); background:var(--white);
-    font-size:13.5px; font-weight:700; color:var(--charcoal-soft); cursor:pointer;
-    transition:border-color .18s ease, background .18s ease, color .18s ease;
-  }
-  .urgency-btn.active{border-color:var(--blue); background:rgba(44,92,134,0.06); color:var(--blue);}
-  .urgency-btn.emergency.active{border-color:var(--red); background:rgba(192,57,43,0.06); color:var(--red);}
-
-  /* text inputs */
-  .input-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
-  .text-field{width:100%;}
-  .text-field label{display:block; font-size:13px; font-weight:700; margin-bottom:8px; color:var(--charcoal);}
-  .text-field input, .text-field textarea{
-    width:100%; padding:13px 16px; border-radius:10px; border:1.5px solid var(--line);
-    font-family:'Manrope', sans-serif; font-size:14.5px; color:var(--charcoal); background:var(--white);
-    transition:border-color .18s ease;
-  }
-  .text-field input:focus, .text-field textarea:focus{border-color:var(--blue); outline:none;}
-  .text-field textarea{resize:vertical; min-height:100px;}
-  .full-width{grid-column:1/3;}
-
-  .submit-row{margin-top:36px; text-align:center;}
-  .btn-submit{
-    width:100%; justify-content:center; background:var(--blue); color:#fff;
-    font-size:15.5px; padding:16px 24px; border-radius:12px;
-  }
-  .btn-submit:hover{background:var(--blue-deep);}
-  .reassure{font-size:13px; color:var(--charcoal-soft); margin-top:14px;}
-  .reassure strong{color:var(--charcoal);}
-
-  /* success state */
-  .success-state{display:none; text-align:center; padding:24px 0;}
-  .success-state.show{display:block;}
-  .success-check{
-    width:60px; height:60px; border-radius:50%; background:rgba(44,92,134,0.1);
-    display:flex; align-items:center; justify-content:center; margin:0 auto 20px;
-  }
-  .success-check svg{width:28px; height:28px; color:var(--blue);}
-  .success-state h2{font-size:24px; margin-bottom:10px;}
-  .success-state p{color:var(--charcoal-soft); font-size:15px; max-width:38ch; margin:0 auto;}
-  .form-card.submitted .form-content{display:none;}
-
-  /* ============ FOOTER ============ */
-  footer.site{background:var(--charcoal); color:rgba(250,249,246,0.6); text-align:center; padding:32px 24px; font-size:12.5px;}
-
-  @media (max-width: 640px){
-    .form-card{padding:28px 20px;}
-    .job-grid{grid-template-columns:repeat(2,1fr);}
-    .input-grid{grid-template-columns:1fr;}
-    .full-width{grid-column:1;}
-  }
-  @media (prefers-reduced-motion: reduce){
-    *{transition:none !important; scroll-behavior:auto !important;}
-  }
-</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B3B1F17HVP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-B3B1F17HVP');
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -195,28 +73,76 @@
 </head>
 <body>
 
-<header class="site">
-  <div class="wrap">
-    <a class="logo" href="index.html">
-      <svg class="mark" viewBox="0 0 34 34" fill="none"><path d="M17 4C17 4 8 15 8 21C8 26.5 12 30 17 30C22 30 26 26.5 26 21C26 15 17 4 17 4Z" fill="#2C5C86"/></svg>
-      Deep Creek Plumbing
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+
+    <a class="logo" href="index.html" aria-label="Deep Creek Plumbing home">
+      <img class="logo-mark" src="images/logo-icon.png" width="232" height="300" alt="" aria-hidden="true">
+      <span class="logo-text">
+        <span class="logo-line1">DEEP CREEK</span>
+        <span class="logo-line2"><i>&mdash;</i>&nbsp;PLUMBING&nbsp;<i>&mdash;</i></span>
+        <span class="logo-line3">WE'RE LOCAL, WE CARE.</span>
+      </span>
     </a>
+
     <div class="header-actions">
-      <a href="tel:0427708434" class="btn btn-outline">📞 Call Now</a>
+      <a class="header-phone" href="tel:0427708434">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" fill="currentColor"/></svg>
+        <span>0427 708 434</span>
+      </a>
+      <a class="emergency-pill" href="tel:0432863654">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a5 5 0 0 0-5 5v4.2C7 14.6 5 16 5 18h14c0-2-2-3.4-2-6.8V7a5 5 0 0 0-5-5Z" fill="currentColor"/><rect x="9" y="19" width="6" height="2" rx="1" fill="currentColor"/></svg>
+        <span>Emergency 24/7</span>
+      </a>
+      <a class="icon-btn phone-icon-btn" href="tel:0427708434" aria-label="Call Deep Creek Plumbing">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" fill="currentColor"/></svg>
+      </a>
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </button>
     </div>
+
   </div>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul>
+      <li><a href="emergency-plumbing.html">24/7 Emergency Plumbing</a></li>
+      <li><a href="blocked-drains.html">Blocked Drains</a></li>
+      <li><a href="hot-water-systems.html">Hot Water & Gas</a></li>
+      <li><a href="services.html">Plumbing Services</a></li>
+      <li><a href="customer-journey.html">Our Process</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="faqs.html">FAQs</a></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="service-area.html">Service Areas</a></li>
+      <li><a href="get-a-quote.html">Get a Quote</a></li>
+    </ul>
+    <a class="mobile-menu-call" href="tel:0427708434">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" fill="currentColor"/></svg>
+      Call 0427 708 434
+    </a>
+  </nav>
 </header>
 
-<section class="page-hero">
-  <div class="wrap">
+<main id="main">
+
+<section class="page-hero page-hero--cream">
+  <div class="wrap-narrow">
+    <div class="review-hero-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="6" y="4" width="12" height="17" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M9 4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1H9V4z" stroke="currentColor" stroke-width="1.7"/><path d="M9 11l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 16h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
     <span class="eyebrow">Request a Quote</span>
     <h1>Let's get you sorted.</h1>
-    <p>Tell us what's going on — Holly reads every message personally, usually back to you within the hour.</p>
+    <p>Fill out the form below and we'll get back to you ASAP &mdash; Holly reads every message personally, usually back to you within the hour.</p>
+    <div class="hero-actions">
+      <a href="tel:0427708434" class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" fill="currentColor"/></svg><span>Call Us</span></a>
+      <a href="mailto:info@deepcreekplumbing.com.au" class="btn btn-outline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Email Us</span></a>
+    </div>
   </div>
 </section>
 
-<section class="form-section">
-  <div class="wrap">
+<section class="content-section">
+  <div class="wrap-narrow" style="max-width:720px">
     <div class="form-card" id="formCard">
       <form class="form-content" id="quoteForm">
 
@@ -234,7 +160,7 @@
               <span>Leak</span>
             </div>
             <div class="job-tile" data-job="Hot Water">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v6M8 8h8l2 4v8a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-8l2-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v6M8 8h8l2 4v8a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-8l2-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
               <span>Hot Water</span>
             </div>
             <div class="job-tile" data-job="Blocked Drain">
@@ -257,7 +183,7 @@
           <div class="urgency-row" id="urgencyRow">
             <button type="button" class="urgency-btn" data-urgency="Not urgent">Not urgent</button>
             <button type="button" class="urgency-btn" data-urgency="This week">This week</button>
-            <button type="button" class="urgency-btn emergency" data-urgency="Emergency — ASAP">Emergency — ASAP</button>
+            <button type="button" class="urgency-btn emergency" data-urgency="Emergency — ASAP">Emergency &mdash; ASAP</button>
           </div>
         </div>
 
@@ -284,8 +210,8 @@
         </div>
 
         <div class="submit-row">
-          <button type="submit" class="btn btn-submit">Send to Holly</button>
-          <p class="reassure"><strong>No call centres, no bots</strong> — this goes straight to Holly's phone.</p>
+          <button type="submit" class="btn btn-primary btn-submit">Send to Holly</button>
+          <p class="form-reassure"><strong>No call centres, no bots</strong> &mdash; this goes straight to Holly's phone.</p>
         </div>
       </form>
 
@@ -293,17 +219,29 @@
         <div class="success-check">
           <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h2>Got it — thanks!</h2>
-        <p>Holly's got your message and will be in touch soon. If it's urgent, give us a call — 0427 708 434.</p>
+        <h2>Got it &mdash; thanks!</h2>
+        <p>Holly's got your message and will be in touch soon. If it's urgent, give us a call &mdash; 0427 708 434.</p>
       </div>
     </div>
   </div>
 </section>
+</main>
 
-<footer class="site">
-  © 2026 Deep Creek Plumbing. All rights reserved.
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a class="footer-phone" href="tel:0427708434">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" fill="currentColor"/></svg>
+      0427 708 434
+    </a>
+    <a class="footer-emergency" href="tel:0432863654">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2a5 5 0 0 0-5 5v4.2C7 14.6 5 16 5 18h14c0-2-2-3.4-2-6.8V7a5 5 0 0 0-5-5Z" fill="currentColor"/><rect x="9" y="19" width="6" height="2" rx="1" fill="currentColor"/></svg>
+      Emergency 24/7
+    </a>
+  </div>
+  <p class="wrap footer-credentials">ABN 63 578 045 899 &nbsp;&middot;&nbsp; Lic. 330134C &nbsp;&middot;&nbsp; Fully insured with NRMA</p>
 </footer>
 
+<script src="script.js"></script>
 <script>
 (function(){
   var jobGrid = document.getElementById('jobGrid');
@@ -327,8 +265,8 @@
   var success = document.getElementById('successState');
   var submitBtn = form.querySelector('button[type="submit"]');
 
-  // IMPORTANT: replace this with your deployed Worker URL once you have it
-  // e.g. "https://deepcreek-enquiry-worker.YOUR-SUBDOMAIN.workers.dev"
+  // Same Cloudflare Worker endpoint as the previous build — sends via Resend to
+  // info@deepcreekplumbing.com.au (see deepcreek-enquiry-worker.js).
   var ENQUIRY_ENDPOINT = "https://deepcreek-enquiry-worker.holly-turner1994.workers.dev";
 
   form.addEventListener('submit', function(e){
@@ -370,6 +308,5 @@
   });
 })();
 </script>
-
 </body>
 </html>
