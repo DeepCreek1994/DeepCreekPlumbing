@@ -36,3 +36,27 @@
     if (e.matches) closeMenu();
   });
 })();
+
+// Conversion tracking (GA4): phone_click on tagged tel: links, cta_click on [data-cta].
+// Never blocks or delays the click; does nothing if gtag is unavailable.
+(function () {
+  document.addEventListener('click', function (e) {
+    if (typeof window.gtag !== 'function' || !e.target.closest) return;
+
+    var tel = e.target.closest('a[href^="tel:"][data-location]');
+    if (tel) {
+      window.gtag('event', 'phone_click', {
+        phone_number: tel.getAttribute('href').replace(/\D/g, ''),
+        location: tel.getAttribute('data-location')
+      });
+    }
+
+    var cta = e.target.closest('[data-cta]');
+    if (cta) {
+      window.gtag('event', 'cta_click', {
+        cta_name: cta.getAttribute('data-cta'),
+        location: cta.getAttribute('data-location')
+      });
+    }
+  }, true);
+})();
