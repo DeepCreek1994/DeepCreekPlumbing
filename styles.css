@@ -1370,3 +1370,170 @@ html{
 }
 *:not(html), *::before, *::after{ cursor: inherit !important; }
 .text-field input, .text-field textarea{ cursor: text !important; }
+
+/* ---------- our work gallery ---------- */
+
+.work-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 360px));
+  justify-content: center;
+  gap: 22px;
+}
+
+.work-card{
+  margin: 0;
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,29,65,.04), 0 20px 44px -26px rgba(0,29,65,.3);
+}
+
+.work-media{
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background: #e9e4da;
+  overflow: hidden;
+}
+.work-media img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.work-card figcaption{ padding: 16px 18px 20px; }
+.work-tag{
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 11.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  margin-bottom: 6px;
+}
+.work-card h3{
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 19px;
+  color: var(--navy);
+  margin: 0 0 4px;
+}
+.work-card figcaption p{ font-size: 14.5px; color: var(--navy-soft); opacity: .85; margin: 0; }
+
+/* before & after: the before photo is clipped to the left of --pos */
+.ba-compare{ --pos: 50%; }
+.ba-compare .ba-before{ clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.ba-compare::after{
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: var(--pos);
+  width: 3px;
+  margin-left: -1.5px;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0,29,65,.15);
+  pointer-events: none;
+}
+.ba-compare::before{
+  content: "\2194";
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: var(--pos);
+  width: 40px; height: 40px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--navy);
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px -6px rgba(0,29,65,.45);
+  pointer-events: none;
+}
+.ba-label{
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(0,29,65,.78);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.ba-label--before{ left: 12px; }
+.ba-label--after{ right: 12px; }
+.ba-range{
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  touch-action: pan-y;
+}
+.ba-compare:has(.ba-range:focus-visible){ outline: 3px solid var(--accent-blue); outline-offset: -3px; }
+.ba-range{ cursor: ew-resize !important; }
+
+/* homepage "Our Work" banner: full-width row under the card grid */
+.card--our-work{
+  order: 110;
+  grid-column: 1 / -1;
+  display: flex;
+  height: 132px;
+  background: var(--navy);
+  color: #fff;
+}
+.our-work-text{
+  flex: 0 0 44%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 18px 20px;
+}
+.our-work-eyebrow{
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.our-work-title{
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.our-work-arrow{ flex-shrink: 0; margin-top: 8px; }
+.our-work-photos{
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 100%;
+  gap: 3px;
+  min-width: 0;
+}
+.card--our-work .our-work-photos img{ display: block; height: 100%; min-height: 0; object-fit: cover; }
+.our-work-photos img:nth-child(3){ display: none; }
+
+@media (min-width: 900px){
+  .card--our-work{ height: 170px; }
+  .our-work-text{ flex-basis: 34%; padding: 24px 30px; }
+  .our-work-eyebrow{ font-size: 12px; }
+  .our-work-title{ font-size: 44px; }
+  .our-work-photos{ grid-template-columns: repeat(3, 1fr); }
+  .our-work-photos img:nth-child(3){ display: block; }
+}
