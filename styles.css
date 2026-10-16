@@ -808,7 +808,8 @@ a{ color: inherit; text-decoration: none; }
 a.rating-badge{ display: block; transition: transform .15s ease, box-shadow .15s ease; }
 a.rating-badge:hover{ transform: translateY(-2px); box-shadow: 0 1px 2px rgba(0,29,65,.06), 0 16px 32px -18px rgba(0,29,65,.32); }
 .review-list{ display: grid; gap: 18px; max-width: 680px; margin: 0 auto; }
-.review-list .testimonial-card .quote{ font-size: 16.5px; font-weight: 500; }
+/* full-length customer reviews read better a little lighter than the original short-quote style */
+.testimonial-card .quote{ font-size: 16.5px; font-weight: 500; }
 .reviews-more{ text-align: center; font-size: 15px; font-weight: 700; margin: 22px 0 0; }
 .reviews-more a{ color: var(--brand-blue); text-decoration: underline; text-underline-offset: 3px; }
 
@@ -1632,3 +1633,51 @@ html{
   .our-work-photos{ grid-template-columns: repeat(3, 1fr); }
   .our-work-photos img:not(:first-child){ display: block; }
 }
+
+/* ---------- trust line under service page hero buttons ---------- */
+.trust-line{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+  margin: 22px 0 0;
+  padding: 0;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.trust-line li{ display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.trust-line a{ color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.trust-stars{ color: #d08c00; letter-spacing: 1px; font-size: 13px; }
+.info-hero-card--navy .trust-line{ color: rgba(255,255,255,.88); }
+.info-hero-card--navy .trust-stars{ color: #f5b81c; }
+.trust-tick{ color: var(--accent-blue); font-weight: 800; }
+.info-hero-card--navy .trust-tick{ color: #8fb4ff; }
+
+/* onward links under the review on service pages */
+.page-links{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 22px;
+  margin: 22px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+.page-links a{ color: var(--brand-blue); text-decoration: underline; text-underline-offset: 3px; }
+
+/* suburb page service tiles are links */
+a.more-card--link{ display: block; color: inherit; transition: transform .15s ease, box-shadow .15s ease; }
+a.more-card--link:hover{ transform: translateY(-2px); box-shadow: 0 1px 2px rgba(0,29,65,.06), 0 16px 32px -18px rgba(0,29,65,.32); }
+
+/* quote form: emergency prompt */
+.emergency-callout{
+  margin: 14px 0 0;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: #fff1ec;
+  border: 1.5px solid rgba(253,74,36,.35);
+  text-align: center;
+}
+.emergency-callout p{ margin: 0 0 12px; font-size: 15px; color: var(--navy); }
+.emergency-callout .btn{ justify-content: center; }
