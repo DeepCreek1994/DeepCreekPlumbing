@@ -1485,6 +1485,15 @@ html{
 .ba-compare:has(.ba-range:focus-visible){ outline: 3px solid var(--accent-blue); outline-offset: -3px; }
 .ba-range{ cursor: ew-resize !important; }
 
+/* before & after shown side by side (when the two photos aren't framed the same) */
+.ba-pair{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100%;
+  gap: 3px;
+}
+.ba-pair img{ position: static; min-width: 0; }
+
 /* homepage "Our Work" banner: full-width row under the card grid */
 .card--our-work{
   order: 110;
