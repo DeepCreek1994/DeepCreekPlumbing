@@ -31,9 +31,40 @@
   });
 
   // Close the mobile menu automatically if the viewport grows into desktop.
-  var desktopQuery = window.matchMedia('(min-width: 900px)');
+  var desktopQuery = window.matchMedia('(min-width: 1280px)');
   desktopQuery.addEventListener('change', function (e) {
     if (e.matches) closeMenu();
+  });
+})();
+
+// Desktop "Services" dropdown: opens on hover (CSS) or click/keyboard (here).
+(function () {
+  document.querySelectorAll('.has-dropdown').forEach(function (item) {
+    var toggle = item.querySelector('.dropdown-toggle');
+    if (!toggle) return;
+
+    function setOpen(open) {
+      item.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    toggle.addEventListener('click', function () {
+      setOpen(!item.classList.contains('open'));
+    });
+
+    // Close when focus or a click moves outside, or on Escape.
+    item.addEventListener('focusout', function (e) {
+      if (!item.contains(e.relatedTarget)) setOpen(false);
+    });
+    document.addEventListener('click', function (e) {
+      if (!item.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && item.classList.contains('open')) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
   });
 })();
 
