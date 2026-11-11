@@ -303,6 +303,32 @@
   // info@deepcreekplumbing.com.au (see deepcreek-enquiry-worker.js).
   var ENQUIRY_ENDPOINT = "https://deepcreek-enquiry-worker.holly-turner1994.workers.dev";
 
+  // Building Brain lead tracking: once the enquiry has been sent, record it
+  // with Building Brain too. Fire-and-forget: it never changes what the
+  // customer sees, and Building Brain sends no extra email (the enquiry
+  // email to info@deepcreekplumbing.com.au stays the only one).
+  function reportToBuildingBrain(p){
+    try {
+      if (!window.fetch || !window.crypto || typeof crypto.randomUUID !== 'function') return;
+      var message = [p.job && 'Job: ' + p.job, p.urgency && 'Urgency: ' + p.urgency, p.suburb && 'Suburb: ' + p.suburb, p.message].filter(Boolean).join('\n');
+      fetch('https://bb-conversion.jwa7990.workers.dev', {
+        method: 'POST',
+        keepalive: true,
+        // text/plain keeps this a 'simple' request (no CORS preflight); the
+        // endpoint reads the JSON body either way and checks the origin itself.
+        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+        body: JSON.stringify({
+          client_id: 'e8576821-e0d7-468c-9c18-9301cc1e8d82',
+          event_type: 'enquiry_form_submitted',
+          submission_id: crypto.randomUUID(),
+          contact: { name: p.name, phone: p.phone },
+          payload: { message: message },
+          source: 'website_form'
+        })
+      }).catch(function(){});
+    } catch (err) { /* tracking must never affect the form */ }
+  }
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
 
@@ -328,6 +354,7 @@
       .then(function(res){ return res.json(); })
       .then(function(data){
         if (data && data.success) {
+          reportToBuildingBrain(payload);
           if (typeof gtag === 'function') {
             gtag('event', 'cta_click', { cta_name: 'send_enquiry', location: 'contact_form' });
           }
